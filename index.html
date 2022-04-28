@@ -1,0 +1,347 @@
+<html>
+  <head>
+    <title>Kitten Gang</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Raleway', sans-serif;
+        scroll-behavior: smooth;
+        outline-style: none;
+        box-shadow: none;
+      }
+
+      body {
+        position: relative;
+        background-image: url(https://img.freepik.com/free-vector/weather-seamless-pattern-background-vector-cute-doodle-illustration-kids_53876-105731.jpg?w=2000);
+        background-size: cover;
+        z-index: -2;
+      }
+
+      body::before {
+        content: " ";
+        position: absolute;
+        background: rgba(255, 255, 255, 0.75);
+        inset: 0;
+        z-index: -1;
+      }
+
+      .header {
+        background: url(https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        font-size: 12vw;
+        line-height: 13vw;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .tile-container {
+        width: 90vw;
+        margin: 0 5vw;
+      }
+
+      .tile-container::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .tile {
+        float: left;
+        width: 24%;
+        margin: 0 0.5%;
+        margin-bottom: 0.5%;
+      }
+
+      .image-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .image-container:before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%;
+      }
+
+      .image {
+        position: absolute;
+        height: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+        top: 0;
+      }
+
+      .image-overlay {
+        display: none;
+      }
+
+      .tile:hover .image-overlay {
+        display: block;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.50);
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .image-overlay > .name-desktop {
+        font-size: 24px;
+        color: #FFFFFF;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+      }
+
+      .name-mobile {
+        display: none;
+      }
+
+      .spacer {
+        width: 100%;
+        height: 30px;
+      }
+
+      .signature {
+        position: absolute;
+        display: block;
+        text-align: right;
+        color: #777777;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      @media only screen and (max-width: 991px) {
+        .header {
+          font-size: 14vw;
+          line-height: 16vw;
+        }
+
+        .tile {
+          width: 48%;
+          margin: 0 1%;
+          margin-bottom: 20px;
+        }
+
+        .image-overlay {
+          display: none;
+        }
+
+        .tile:hover .image-overlay {
+          display: none;
+        }
+
+        .name-mobile {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          color: #333333;
+        }
+
+        .signature {
+          right: unset;
+          left: 15px;
+        }
+      }
+
+
+      /*-- Instructions below: not part of the activity --*/
+      .activity-help {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+      }
+
+      .activity-help__icon {
+        position: relative;
+        display: block;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.75);
+        color: #EEEEEE;
+        text-align: center;
+        font-size: 30px;
+        line-height: 45px;
+        height: 45px;
+        width: 45px;
+        float: right;
+      }
+
+      .activity-instructions {
+        position: relative;
+        display: none;
+        background: #FFFFFF;
+        padding: 20px;
+        border-radius: 5px;
+        border-color: #333333;
+        border: rgba(0, 0, 0, 0.75) 1px solid;
+        float: right;
+        margin-right: 10px;
+        width: calc(100% - 55px)
+      }
+
+      .activity-help:hover > .activity-instructions {
+        display: block;
+      }
+
+      .activity-instructions__heading {
+        font-size: 24px;
+        margin: 15px 0 px;
+      }
+
+      .activity-instructions__list {
+        padding-left: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      @media only screen and (max-width: 991px) {
+        .activity-help {
+          top: unset;
+          bottom: 15px;
+          left: 15px;
+        }
+
+        .activity-help__icon {
+          position: absolute;
+          margin-bottom: 10px;
+          height: 9vw;
+          width: 9vw;
+          line-height: 9vw;
+          font-size: 6vw;
+          bottom: 0;
+          right: 0;
+        }
+
+        .activity-instructions {
+          position: absolute;
+          margin-right: 1vw;
+          width: calc(100% - 10vw);
+          bottom: 0;
+        }
+
+        .activity-instructions__list {
+          padding-left: 4vw;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1 class="header">Kitten Gang</h1>
+
+    <section class="tile-container">
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://assets.teenvogue.com/photos/5bae8cdc7ee7b7478749da8e/1:1/w_354%2Cc_limit/tout.jpg">
+          <div class="image-overlay">
+            <span class="name-desktop">Charlie</span>
+          </div>
+        </div>
+        <span class="name-mobile">Charlie</span>
+      </div>
+
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://s36537.pcdn.co/wp-content/uploads/2018/06/bringing-home-kitty-mouth-open-wide.jpg.optimal.jpg">
+          <div class="image-overlay">
+            <span class="name-desktop">Arnold</span>
+          </div>
+        </div>
+        <span class="name-mobile">Arnold</span>
+      </div>
+
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://www.petmd.com/sites/default/files/petmd-kitten-facts.jpg">
+          <div class="image-overlay">
+            <span class="name-desktop">Gemini</span>
+          </div>
+        </div>
+        <span class="name-mobile">Gemini</span>
+      </div>
+
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://imgix.ranker.com/list_img_v2/2209/1002209/original/the-most-adorable-kitten-breeds-u1">
+          <div class="image-overlay">
+            <span class="name-desktop">Lickers</span>
+          </div>
+        </div>
+        <span class="name-mobile">Lickers</span>
+      </div>
+
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://kcpetproject.org/wp-content/uploads/93874862_703538577077718_280086469618434048_n.jpg">
+          <div class="image-overlay">
+            <span class="name-desktop">Bob</span>
+          </div>
+        </div>
+        <span class="name-mobile">Bob</span>
+      </div>
+
+      <div class="tile">
+        <div class="image-container">
+          <img class="image" src="https://images.ctfassets.net/pjshm78m9jt4/154563_header/b97363b2e8c0539f73bbe6411e86217d/importedImage154563_header">
+          <div class="image-overlay">
+            <span class="name-desktop">Arlee</span>
+          </div>
+        </div>
+        <span class="name-mobile">Arlee</span>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+    <span class="signature">by /arreolabenn</span>
+
+
+    <!-- Instructions below: not part of the activity -->
+    <div class="activity-help">
+      <span class="activity-help__icon">?</span>
+      <div class="activity-instructions">
+        <h2 class="activity-instructions__heading">Topics</h2>
+        <ul class="activity-instructions__list">
+          <li>CSS Reset</li>
+          <li>Mobile Responsiveness (Breakpoints)</li>
+          <li>CSS Backgroud (Mask and Clip)</li>
+          <li>CSS Grid system</li>
+          <li>CSS Clearfix</li>
+          <li>CSS Pseudo-Classes (Hover)</li>
+        </ul>
+
+        <h2 class="activity-instructions__heading">To do</h2>
+        <ul class="activity-instructions__list">
+          <li>
+            Gallery heading
+            <ul class="activity-instructions__list">
+              <li>Image clipped to heading text</li>
+            </ul>
+          </li>
+          <li>
+            12-image gallery
+            <ul class="activity-instructions__list">
+              <li>Any image</li>
+              <li>4 columns by 2 rows for Desktop</li>
+              <li>2 columns by 3 rows for Mobile</li>
+            </ul>
+          </li>
+          <li>On hover on image, display name on top of image for Desktop</li>
+          <li>Name displayed below each image for Mobile</li>
+          <li>Add background image for entire page</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
