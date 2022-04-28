@@ -38,7 +38,7 @@
         -webkit-text-fill-color: transparent;
 
         font-size: 12vw;
-        line-height: 13vw;
+        line-height: 14vw;
         text-align: center;
         margin-bottom: 20px;
       }
@@ -165,7 +165,7 @@
         right: 15px;
       }
 
-      .activity-help__icon {
+      #activity-help__icon {
         position: relative;
         display: block;
         border-radius: 50%;
@@ -179,9 +179,10 @@
         float: right;
         cursor: pointer;
         text-decoration: none;
+        border: none;
       }
 
-      .activity-instructions {
+      #activity-instructions {
         position: relative;
         display: none;
         background: #FFFFFF;
@@ -191,22 +192,24 @@
         border: rgba(0, 0, 0, 0.75) 1px solid;
         float: right;
         margin-right: 10px;
-        width: calc(100% - 55px)
+        width: calc(100% - 55px);
+        max-height: 100vh;
+        overflow-y: scroll;
       }
 
-      .activity-help:hover > .activity-instructions {
+      #activity-instructions.active {
         display: block;
       }
 
       .activity-instructions__heading {
-        font-size: 30px;
+        font-size: 24px;
         margin: 15px 0 px;
       }
 
       .activity-instructions__list {
         padding-left: 20px;
         margin-bottom: 10px;
-        font-size: 30px;
+        font-size: 16px;
       }
 
       @media only screen and (max-width: 991px) {
@@ -216,7 +219,7 @@
           left: 15px;
         }
 
-        .activity-help__icon {
+        #activity-help__icon {
           position: absolute;
           margin-bottom: 10px;
           height: 9vw;
@@ -227,15 +230,21 @@
           right: 0;
         }
 
-        .activity-instructions {
+        #activity-instructions {
           position: absolute;
           margin-right: 1vw;
           width: calc(100% - 10vw);
+          max-height: 75vh;
           bottom: 0;
         }
 
         .activity-instructions__list {
           padding-left: 4vw;
+          font-size: 30px;
+        }
+
+        .activity-instructions__heading {
+          font-size: 24px;
         }
       }
     </style>
@@ -312,8 +321,8 @@
 
     <!-- Instructions below: not part of the activity -->
     <div class="activity-help">
-      <a class="activity-help__icon" href="javascript:void(0);">?</a>
-      <div class="activity-instructions">
+      <button id="activity-help__icon">?</button>
+      <div id="activity-instructions">
         <h2 class="activity-instructions__heading">Topics</h2>
         <ul class="activity-instructions__list">
           <li>CSS Reset</li>
@@ -348,5 +357,17 @@
         </ul>
       </div>
     </div>
+
+    <script>
+      const element = document.getElementById("activity-help__icon");
+      element.addEventListener("click", function() {
+        let target = document.getElementById("activity-instructions");
+        if(target.classList.contains("active")) {
+          target.classList.remove("active");
+        } else {
+          target.classList.add("active");
+        }
+      });
+    </script>
   </body>
 </html>
